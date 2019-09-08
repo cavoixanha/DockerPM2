@@ -18,8 +18,12 @@ RUN apk add --no-cache --virtual .gyp \
         python \
         make \
         g++ \
-    #&& npm install --arch=x64 --platform=linuxmusl sharp \
+    #&& ls -lA \
+    #&& pwd \
+    #&& npm bin \
     && npm install --arch=x64 --platform=linuxmusl --production \
+    && rm -rf ./src/libs/sharp/vendor \
+    && npm install --arch=x64 --platform=linuxmusl sharp --production \
     #&& npm install \
     #    [ your npm dependencies here ] \
     && apk del .gyp
